@@ -1,0 +1,843 @@
+{
+	"info": {
+		"_postman_id": "e660251e-3388-4050-9d80-09b5342efadb",
+		"name": "API iPag",
+		"description": "ENV_VAR:\n\n<img src=\"https://content.pstmn.io/32ba53d1-6600-4e76-a3e2-f4ebc8624bf1/aW1hZ2UucG5n\" width=\"1214\" height=\"170\">",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34743755"
+	},
+	"item": [
+		{
+			"name": "Pagamentos",
+			"item": [
+				{
+					"name": "Criar Pagamento",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{API_KEY}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{API_ID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-version",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/service/payment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"service",
+								"payment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Exemplo de Pagamento via Cartão de Crédito (Simples)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-version",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 97.86,\r\n  \"callback_url\": \"https://99mystore.com.br/ipag/callback\",\r\n  \"order_id\": \"1234567\",\r\n  \"payment\": {\r\n    \"type\": \"card\",\r\n    \"method\": \"visa\",\r\n    \"installments\": 1,\r\n    \"card\": {\r\n      \"holder\": \"FULANO DA SILVA\",\r\n      \"number\": \"4111 1111 1111 1111\",\r\n      \"expiry_month\": \"01\",\r\n      \"expiry_year\": \"2025\",\r\n      \"cvv\": \"123\"\r\n    }\r\n  },\r\n  \"customer\": {\r\n    \"name\": \"Jack Jins\",\r\n    \"cpf_cnpj\": \"799.993.388-01\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Exemplo de Pagamento via Cartão de Crédito (Completo)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-version",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 100.0,\r\n  \"callback_url\": \"https://99mystore.com.br/ipag/callback\",\r\n  \"payment\": {\r\n    \"type\": \"card\",\r\n    \"method\": \"visa\",\r\n    \"installments\": 1,\r\n    \"capture\": false,\r\n    \"softdescriptor\": \"MYSTORE\",\r\n    \"fraud_analysis\": true,\r\n    \"card\": {\r\n      \"holder\": \"FULANO DA SILVA\",\r\n      \"number\": \"4111 1111 1111 1111\",\r\n      \"expiry_month\": \"03\",\r\n      \"expiry_year\": \"2021\",\r\n      \"cvv\": \"123\"\r\n    }\r\n  },\r\n  \"customer\": {\r\n    \"name\": \"Fulano da Silva\",\r\n    \"cpf_cnpj\": \"79999338801\",\r\n    \"phone\": \"(11) 99719-2099\",\r\n    \"email\": \"fulano@mail.me\",\r\n    \"birthdate\": \"1989-03-28\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"billing_address\": {\r\n      \"street\": \"Rua Júlio Gonzalez\",\r\n      \"number\": \"1023\",\r\n      \"district\": \"Barra Funda\",\r\n      \"complement\": \"Sala 02\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"zipcode\": \"01156-060\"\r\n    }\r\n  },\r\n  \"products\": [\r\n    {\r\n      \"name\": \"Darth Vader - Toy\",\r\n      \"description\": \"Darth Vader Toy in Real Size Model\",\r\n      \"unit_price\": 50.0,\r\n      \"quantity\": 2,\r\n      \"sku\": \"DARKSIDE\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Exemplo de Pagamento via Cartão de Crédito para Clientes Estrangeiros (Simples)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-version",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 100.0,\r\n  \"callback_url\": \"https://99mystore.com.br/ipag/callback\",\r\n  \"order_id\": \"1234567\",\r\n  \"payment\": {\r\n    \"type\": \"card\",\r\n    \"method\": \"visa\",\r\n    \"installments\": 1,\r\n    \"card\": {\r\n      \"holder\": \"JACK JONES\",\r\n      \"number\": \"4111111111111111\",\r\n      \"expiry_month\": \"03\",\r\n      \"expiry_year\": \"2021\",\r\n      \"cvv\": \"123\"\r\n    }\r\n  },\r\n  \"customer\": {\r\n    \"name\": \"Jack Jones\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Exemplo de Pagamento via Cartão de Crédito para um Evento",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-version",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 85.0,\r\n  \"callback_url\": \"https://99mystore.com.br/ipag/callback\",\r\n  \"order_id\": \"1234567\",\r\n  \"payment\": {\r\n    \"type\": \"card\",\r\n    \"method\": \"visa\",\r\n    \"installments\": 1,\r\n    \"capture\": false,\r\n    \"fraud_analysis\": true,\r\n    \"card\": {\r\n      \"holder\": \"ARTHUR MORGAN\",\r\n      \"number\": \"4111 1111 1111 1111\",\r\n      \"expiry_month\": \"03\",\r\n      \"expiry_year\": \"2021\",\r\n      \"cvv\": \"123\"\r\n    }\r\n  },\r\n  \"customer\": {\r\n    \"name\": \"Arthur Morgan\",\r\n    \"cpf_cnpj\": \"972.089.620-57\"\r\n  },\r\n  \"event\": {\r\n    \"name\": \"Reveillon - 2022\",\r\n    \"date\": \"2022-01-01 00:00:00\",\r\n    \"type\": \"party\",\r\n    \"subtype\": \"Reveillon\",\r\n    \"venue\": {\r\n      \"name\": \"Campo - Clube das Laranjeiras\",\r\n      \"capacity\": 2000,\r\n      \"address\": \"Av. Santos Dumont\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\"\r\n    },\r\n    \"tickets\": [\r\n      {\r\n        \"id\": \"EVENT001\",\r\n        \"category\": \"regular\",\r\n        \"premium\": false,\r\n        \"section\": \"Pista\",\r\n        \"attendee\": {\r\n          \"document\": \"972.089.620-57\",\r\n          \"dob\": \"1990-10-28\"\r\n        }\r\n      },\r\n      {\r\n        \"id\": \"EVENT002\",\r\n        \"category\": \"regular\",\r\n        \"premium\": true,\r\n        \"section\": \"Camarote\",\r\n        \"attendee\": {\r\n          \"document\": \"444.631.330-41\",\r\n          \"dob\": \"1992-03-28\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Exemplo de Pagamento via Boleto (Completo)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-version",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 100.0,\r\n  \"callback_url\": \"https://99mystore.com.br/ipag/callback\",\r\n  \"payment\": {\r\n    \"type\": \"boleto\",\r\n    \"method\": \"boletopagseguro\",\r\n    \"boleto\": {\r\n      \"due_date\": \"2020-10-20\",\r\n      \"instructions\": [\r\n        \"Sr. Caixa não receber após o vencimento\",\r\n        \"Boleto referente ao pedido 777 na Loja MYSTORE\"\r\n      ]\r\n    }\r\n  },\r\n  \"customer\": {\r\n    \"name\": \"Fulano da Silva\",\r\n    \"cpf_cnpj\": \"79999338801\",\r\n    \"phone\": \"(11) 99719-2099\",\r\n    \"email\": \"fulano@mail.me\",\r\n    \"birthdate\": \"1989-03-28\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"billing_address\": {\r\n      \"street\": \"Rua Júlio Gonzalez\",\r\n      \"number\": \"1023\",\r\n      \"district\": \"Barra Funda\",\r\n      \"complement\": \"Sala 02\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"zipcode\": \"01156-060\"\r\n    },\r\n    \"shipping_address\": {\r\n      \"street\": \"Rua Júlio Gonzalez\",\r\n      \"number\": \"1023\",\r\n      \"district\": \"Barra Funda\",\r\n      \"complement\": \"Sala 02\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"zipcode\": \"01156-060\"\r\n    }\r\n  },\r\n  \"products\": [\r\n    {\r\n      \"name\": \"Luke Skywalker Lightsaber Blue\",\r\n      \"description\": \"Luke Skywalker Real Lightsaber in Blue\",\r\n      \"unit_price\": 100.0,\r\n      \"quantity\": 1,\r\n      \"sku\": \"LIGHTSIDE\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Exemplo de Pagamento com Tokenização do Cartão de Crédito",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-version",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 97.65,\r\n  \"callback_url\": \"https://9a32ecb90e4cb7ef0f44d6262ec7b5d9.m.pipedream.net\",\r\n  \"payment\": {\r\n    \"type\": \"card\",\r\n    \"method\": \"visa\",\r\n    \"installments\": 1,\r\n    \"card\": {\r\n      \"tokenize\": true,\r\n      \"holder\": \"FULANO DA SILVA\",\r\n      \"number\": \"4532 2876 7749 2847\",\r\n      \"expiry_month\": \"03\",\r\n      \"expiry_year\": \"2021\",\r\n      \"cvv\": \"123\"\r\n    }\r\n  },\r\n  \"customer\": {\r\n    \"name\": \"Jack Jins\",\r\n    \"cpf_cnpj\": \"799.993.388-01\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Exemplo de Pagamento utilizando apenas o Token de Cartão",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-version",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 97.65,\r\n  \"callback_url\": \"https://9a32ecb90e4cb7ef0f44d6262ec7b5d9.m.pipedream.net\",\r\n  \"payment\": {\r\n    \"type\": \"card\",\r\n    \"installments\": 1,\r\n    \"card\": {\r\n      \"token\": \"d2ce5a32-c67e-4c50-8726-f6fc43c477fb\"\r\n    }\r\n  },\r\n  \"customer\": {\r\n    \"name\": \"Jack Jins\",\r\n    \"cpf_cnpj\": \"799.993.388-01\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Exemplo de Pagamento via Cartão de Crédito com Criação de Assinatura|Cobrança Recorrente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-version",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 99.0,\r\n  \"callback_url\": \"https://99mystore.com.br/ipag/callback\",\r\n  \"payment\": {\r\n    \"type\": \"card\",\r\n    \"method\": \"visa\",\r\n    \"installments\": 1,\r\n    \"capture\": true,\r\n    \"card\": {\r\n      \"holder\": \"FULANO DA SILVA\",\r\n      \"number\": \"4111 1111 1111 1111\",\r\n      \"expiry_month\": \"03\",\r\n      \"expiry_year\": \"2021\",\r\n      \"cvv\": \"123\"\r\n    }\r\n  },\r\n  \"customer\": {\r\n    \"name\": \"Fulano da Silva\",\r\n    \"cpf_cnpj\": \"79999338801\",\r\n    \"phone\": \"(11) 99719-2099\",\r\n    \"email\": \"fulano@mail.me\",\r\n    \"birthdate\": \"1989-03-28\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"billing_address\": {\r\n      \"street\": \"Rua Júlio Gonzalez\",\r\n      \"number\": \"1023\",\r\n      \"district\": \"Barra Funda\",\r\n      \"complement\": \"Sala 02\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"zipcode\": \"01156-060\"\r\n    }\r\n  },\r\n  \"subscription\": {\r\n    \"frequency\": 1,\r\n    \"interval\": \"month\",\r\n    \"start_date\": \"2020-10-18\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Exemplo de Pagamento via Cartão de Crédito com Split de Pagamento",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-version",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 99.0,\r\n  \"callback_url\": \"https://99mystore.com.br/ipag/callback\",\r\n  \"payment\": {\r\n    \"type\": \"card\",\r\n    \"method\": \"visa\",\r\n    \"installments\": 1,\r\n    \"capture\": true,\r\n    \"card\": {\r\n      \"holder\": \"FULANO DA SILVA\",\r\n      \"number\": \"4111 1111 1111 1111\",\r\n      \"expiry_month\": \"03\",\r\n      \"expiry_year\": \"2021\",\r\n      \"cvv\": \"123\"\r\n    }\r\n  },\r\n  \"customer\": {\r\n    \"name\": \"Fulano da Silva\",\r\n    \"cpf_cnpj\": \"79999338801\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"billing_address\": {\r\n      \"street\": \"Rua Júlio Gonzalez\",\r\n      \"number\": \"1023\",\r\n      \"district\": \"Barra Funda\",\r\n      \"complement\": \"Sala 02\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"zipcode\": \"01156-060\"\r\n    }\r\n  },\r\n  \"split_rules\": [\r\n    {\r\n      \"seller_id\": \"vendedor1@mail.me\",\r\n      \"amount\": 15.87,\r\n      \"liable\": true\r\n    },\r\n    {\r\n      \"seller_id\": \"vendedor2@mail.me\",\r\n      \"percentage\": 20.0,\r\n      \"liable\": true,\r\n      \"charge_processing_fee\": false\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Exemplo de Pagamento via Pix (Completo)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-version",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 97.86,\r\n  \"callback_url\": \"https://99mystore.com.br/ipag/callback\",\r\n  \"order_id\": \"1234567\",\r\n  \"payment\": {\r\n    \"type\": \"pix\",\r\n    \"method\": \"pix\",\r\n    \"pix_expires_in\": 60\r\n  },\r\n  \"customer\": {\r\n    \"name\": \"Fulano da Silva\",\r\n    \"cpf_cnpj\": \"79999338801\",\r\n    \"phone\": \"(11) 99719-2099\",\r\n    \"email\": \"fulano@mail.me\",\r\n    \"birthdate\": \"1989-03-28\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"billing_address\": {\r\n      \"street\": \"Rua Júlio Gonzalez\",\r\n      \"number\": \"1023\",\r\n      \"district\": \"Barra Funda\",\r\n      \"complement\": \"Sala 02\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"zipcode\": \"01156-060\"\r\n    },\r\n    \"shipping_address\": {\r\n      \"street\": \"Rua Júlio Gonzalez\",\r\n      \"number\": \"1023\",\r\n      \"district\": \"Barra Funda\",\r\n      \"complement\": \"Sala 02\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"zipcode\": \"01156-060\"\r\n    }\r\n  },\r\n  \"products\": [\r\n    {\r\n      \"name\": \"Luke Skywalker Lightsaber Blue\",\r\n      \"description\": \"Luke Skywalker Real Lightsaber in Blue\",\r\n      \"unit_price\": 100.0,\r\n      \"quantity\": 1,\r\n      \"sku\": \"LIGHTSIDE\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Consultar Pagamento",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{API_KEY}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{API_ID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-version",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/service/consult?id={id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"service",
+								"consult"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{id}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/service/consult?id=1069309",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"consult"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1069309"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Capturar Pagamento",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{API_KEY}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{API_ID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-version",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}}/service/capture?id={id}",
+							"host": [
+								"{{base_url}}}"
+							],
+							"path": [
+								"service",
+								"capture"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{id}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/service/capture?id=1069309",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"capture"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1069309"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Cancelar Pagamento",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{API_KEY}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{API_ID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-version",
+								"value": "2",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/service/cancel?id={id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"service",
+								"cancel"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{id}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/service/cancel?id=10069308",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"cancel"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "10069308"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Validação de Cartão de Crédito",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{API_KEY}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{API_ID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/service/payment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"service",
+								"payment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/service/payment",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"payment"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transação",
+			"item": [
+				{
+					"name": "Consultar uma Transação",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{API_KEY}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{API_ID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/service/resources/transactions?id={id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"service",
+								"resources",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{id}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/service/resources/transactions?id=1069309",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"resources",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1069309"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Listar Todas Transações",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{API_KEY}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{API_ID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/service/resources/transactions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"service",
+								"resources",
+								"transactions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/service/resources/transactions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"service",
+										"resources",
+										"transactions"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}
